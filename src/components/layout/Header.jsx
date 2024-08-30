@@ -2,13 +2,13 @@ import "./Header.css";
 import Navigation from "./Navigation";
 import SearchField from "../ui/SearchField";
 
-const Header = () => {
+const Header = ({ setProductList }) => {
   return (
     <header>
       <div>
         <a href="/">메인 로고</a>
       </div>
-      <SearchField />
+      <SearchField setProductList={setProductList} />
       <Navigation />
     </header>
   );

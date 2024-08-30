@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa"; /* 돋보기 아이콘 가져오기 */
+import axios from "axios";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 const SearchForm = styled.form`
   max-width: 400px;
@@ -48,20 +50,29 @@ const SearchButton = styled.button`
   }
 `;
 
-const SearchField = () => {
+const SearchField = ({ setProductList }) => {
   const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate(); // 페이지 이동 처리를 위해 필요
 
   const handleKeywordChange = (evt) => {
     setKeyword(evt.target.value);
+    console.log(evt.target.value);
   };
 
-  const handleSearch = (evt) => {
+  const handleSearch = async (evt) => {
     evt.preventDefault();
+
+    const res = await axios.get(
+      `http://localhost:8080/product?keyword=${keyword}`
+    );
+    const data = res.data;
+    setProductList(data);
+    navigate("/search");
   };
   return (
     <SearchForm onSubmit={handleSearch}>
       <SearchInput
-        type="search"
+        type="text"
         name="keyword"
         placeholder="검색어를 입력하세요..."
         value={keyword}
