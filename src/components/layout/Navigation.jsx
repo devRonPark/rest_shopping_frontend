@@ -7,10 +7,6 @@ const MenuList = styled.ul`
 
   display: flex;
   align-items: center;
-
-  li + li {
-    margin-left: 20px;
-  }
 `;
 
 const MenuItem = styled.li`

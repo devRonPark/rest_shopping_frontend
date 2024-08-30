@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaSearch } from "react-icons/fa"; /* 돋보기 아이콘 가져오기 */
 
 const SearchForm = styled.form`
+  max-width: 400px;
   display: flex;
   justify-content: center;
   flex-grow: 1;
@@ -11,7 +12,7 @@ const SearchForm = styled.form`
 
 const SearchInput = styled.input`
   width: 100%;
-  max-width: 400px;
+
   padding: 8px 16px;
   border: 1px solid #ccc;
   border-radius: 20px; /* 둥근 모서리 */
